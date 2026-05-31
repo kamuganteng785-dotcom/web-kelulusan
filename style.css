@@ -1,42 +1,157 @@
-import { createClient }
-from 'https://esm.sh/@supabase/supabase-js'
-
-const supabase = createClient(
-'URL_SUPABASE',
-'ANON_KEY'
-)
-
-async function cekKelulusan(){
-
-const nisn =
-document.getElementById('nisn').value
-
-const { data,error } =
-await supabase
-.from('kelulusan')
-.select('*')
-.eq('nisn',nisn)
-.single()
-
-const hasil =
-document.getElementById('hasil')
-
-if(data){
-
-hasil.innerHTML=
-`
-<h2>${data.nama}</h2>
-<h3>${data.status}</h3>
-`
-
-}else{
-
-hasil.innerHTML=
-"Data tidak ditemukan"
-
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
 }
 
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background: #246567;
+
+    padding:20px;
 }
 
-window.cekKelulusan=
-cekKelulusan
+.container{
+    width:100%;
+    max-width:650px;
+}
+
+.card{
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(15px);
+    -webkit-backdrop-filter:blur(15px);
+
+    border:1px solid rgba(255,255,255,0.2);
+
+    padding:40px;
+    border-radius:25px;
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,.2);
+
+    text-align:center;
+}
+
+h1{
+    color:white;
+    font-size:38px;
+    font-weight:800;
+    line-height:1.2;
+    margin-bottom:15px;
+}
+
+h1 span{
+    display:block;
+    font-size:28px;
+    margin-top:8px;
+    color:#EAE0CF;
+}
+
+.subtitle{
+    color:white;
+    opacity:.9;
+    margin-bottom:30px;
+}
+
+input{
+    width:100%;
+    padding:15px;
+
+    border:none;
+    border-radius:12px;
+
+    font-size:16px;
+
+    margin-bottom:15px;
+}
+
+input:focus{
+    outline:none;
+}
+
+button{
+    width:100%;
+    padding:15px;
+
+    border:none;
+    border-radius:12px;
+
+    background:#111844;
+    color:white;
+
+    font-size:16px;
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+button:hover{
+    background:#4B5694;
+    transform:translateY(-2px);
+}
+
+#hasil{
+    margin-top:25px;
+    padding:20px;
+
+    border-radius:15px;
+
+    background:rgba(255,255,255,.2);
+
+    color:white;
+
+    min-height:60px;
+}
+
+#hasil h2{
+    margin-bottom:10px;
+    font-size:28px;
+}
+
+#hasil h3{
+    font-size:22px;
+    color:#EAE0CF;
+}
+
+.footer{
+    margin-top:20px;
+    color:white;
+    font-size:13px;
+    opacity:.8;
+}
+
+@media(max-width:600px){
+
+    .card{
+        padding:25px;
+    }
+
+    h1{
+        font-size:28px;
+    }
+
+    h1 span{
+        font-size:20px;
+    }
+
+}
+.logo{
+    width:130px;
+    height:auto;
+    margin-bottom:20px;
+
+    border-radius:50%;
+
+    background:rgb(53, 72, 109);
+    padding:4px;
+
+    box-shadow:
+    0 5px 15px rgba(0,0,0,.2);
+}

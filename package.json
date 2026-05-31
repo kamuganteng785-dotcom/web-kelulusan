@@ -1,42 +1,12 @@
-import { createClient }
-from 'https://esm.sh/@supabase/supabase-js'
-
-const supabase = createClient(
-'URL_SUPABASE',
-'ANON_KEY'
-)
-
-async function cekKelulusan(){
-
-const nisn =
-document.getElementById('nisn').value
-
-const { data,error } =
-await supabase
-.from('kelulusan')
-.select('*')
-.eq('nisn',nisn)
-.single()
-
-const hasil =
-document.getElementById('hasil')
-
-if(data){
-
-hasil.innerHTML=
-`
-<h2>${data.nama}</h2>
-<h3>${data.status}</h3>
-`
-
-}else{
-
-hasil.innerHTML=
-"Data tidak ditemukan"
-
+{
+  "name": "web-kelulusan",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
-
-}
-
-window.cekKelulusan=
-cekKelulusan
