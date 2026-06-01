@@ -43,7 +43,7 @@ async function cekKelulusan() {
     if (siswa) {
 
      const warna =
-siswa.status === 'LULUS'
+siswa.status === 'SELAMAT ANDA DINYATAKAN LULUS'
 ? '#00ff88'
 : '#ff5c5c'
 
