@@ -42,18 +42,21 @@ async function cekKelulusan() {
 
     if (siswa) {
 
-     const warna =
-siswa.status === 'SELAMAT ANDA DINYATAKAN LULUS'
-? '#00ff88'
-: '#ff5c5c'
+      const lulus = siswa.status.toUpperCase() === 'LULUS'
 
-hasil.innerHTML = `
-<h2>${siswa.nama}</h2>
+      const warna = lulus ? '#00ff88' : '#ff5c5c'
 
-<h3 style="color:${warna}">
-STATUS : ${siswa.status}
-</h3>
-`
+      const pesan = lulus
+        ? 'SELAMAT, ANDA DINYATAKAN LULUS'
+        : 'ANDA DINYATAKAN TIDAK LULUS'
+
+      hasil.innerHTML = `
+      <h2>${siswa.nama}</h2>
+
+      <h3 style="color:${warna}; font-size:24px;">
+      ${pesan}
+      </h3>
+      `
 
     } else {
 
